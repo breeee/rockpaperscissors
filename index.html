@@ -1,0 +1,119 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<head>
+
+  <script>
+
+  function computerPlay () {
+    let num = Math.floor(Math.random() * 9);
+
+
+    if (num < 3) {
+//      console.log("Rock: Random number: " + num);
+      return "Rock";
+    }
+    else if (num < 6) {
+//      console.log("Scissors: Random number: " + num);
+      return "Scissors";
+    }
+    else {
+//      console.log("Paper: Random number: " + num);
+      return "Paper";
+    }
+
+  }
+
+  function makeChoice() {
+    let choice = prompt("Make your choice", "rock");
+    choice = choice.toLowerCase()
+
+    if (choice === "rock" | choice === "paper" | choice === "scissors") {
+      return choice;
+    }
+    else {
+      console.log("invalid");
+    }
+  }
+
+  function play(playerSelection = makeChoice(),computerSelection=computerPlay()) {
+      let winResult;
+
+//      console.log("Computer selection: " + computerSelection);
+
+      playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.substr(1);
+
+      switch(playerSelection) {
+
+        case ("Rock"):
+          if (computerSelection == "Rock") {
+            winResult = "tie";
+            break;
+          }
+          else if (computerSelection == "Paper") {
+            winResult = "lose";
+            break;
+          }
+          else if (computerSelection == "Scissors") {
+            winResult = "win";
+            break;
+          }
+
+        case ("Paper"):
+          if (computerSelection == "Rock") {
+            winResult = "win";
+            break;
+          }
+          else if (computerSelection == "Paper") {
+            winResult = "tie";
+            break;
+          }
+          else if (computerSelection == "Scissors") {
+            winResult = "lose";
+            break;
+          }
+
+        case ("Scissors"):
+          if (computerSelection == "Rock") {
+            winResult = "lose";
+            break;
+          }
+          else if (computerSelection == "Paper") {
+            winResult = "win";
+            break;
+          }
+          else if (computerSelection == "Scissors") {
+            winResult = "tie";
+            break;
+          }
+      }
+
+//      console.log("Win result: " + winResult);
+
+      if (winResult == "win") {
+        console.log("You win! " + playerSelection + " beats " + computerSelection);
+      }
+      else if (winResult == "lose") {
+        console.log("Sorry. " + computerSelection + " beats " + playerSelection);
+      }
+      else {
+        console.log("It's a tie. You both chose " + playerSelection);
+      }
+
+//      console.log("Player: " + playerSelection);
+//      console.log("Computer: " + computerSelection);
+
+  }
+
+  play();
+
+  </script>
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>
